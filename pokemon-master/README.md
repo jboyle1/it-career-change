@@ -1,4 +1,4 @@
-## Pokemon Game
+## Pokemon Game (Python)
 
 ### Description
 
