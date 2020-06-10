@@ -154,3 +154,12 @@ class Trainer:
         my_pokemon = self.pokemons[self.current_pokemon]
         their_pokemon = other_trainer.pokemons[other_trainer.current_pokemon]
         my_pokemon.attack(their_pokemon)
+
+
+# 013 Make six pokemon that are made with different levels. (If no level is given, it is level 5)
+a = Charmander(7)
+b = Squirtle()
+c = Squirtle(1)
+d = Bulbasaur(10)
+e = Charmander()
+f = Squirtle(2)
