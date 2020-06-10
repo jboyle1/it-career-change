@@ -163,3 +163,11 @@ c = Squirtle(1)
 d = Bulbasaur(10)
 e = Charmander()
 f = Squirtle(2)
+
+
+# 014 Two trainers are created. The first three pokemon are given to trainer 1, the second three are given to trainer 2.
+trainer_one = Trainer([a,b,c], 3, "Alex")
+trainer_two = Trainer([d,e,f], 5, "Sara")
+
+print(trainer_one)
+print(trainer_two)
