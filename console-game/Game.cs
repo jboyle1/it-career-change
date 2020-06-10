@@ -32,5 +32,23 @@ namespace ConsoleGame
           break;
       }
     }
+
+    // Create an UpdateCursor() method. It will allow the player icon to change with each keypress. Its input will be the key pressed and it will return a symbol that represents the player.
+    public new static char UpdateCursor(string key)
+    {
+      switch (key)
+      {
+        case "LeftArrow":
+          return '<';
+        case "RightArrow":
+          return '>';
+        case "UpArrow":
+          return '^';
+        case "DownArrow":
+          return 'v';
+        default:
+          return '<';
+      }
+    }
   }
 }
