@@ -147,3 +147,10 @@ class Trainer:
             self.potions -= 1
         else:
             print("You don't have any more potions")
+
+    # 012 - # Create attack_other_trainer method.
+    def attack_other_trainer(self, other_trainer):
+        # Your current pokemon attacks the other trainer's current pokemon
+        my_pokemon = self.pokemons[self.current_pokemon]
+        their_pokemon = other_trainer.pokemons[other_trainer.current_pokemon]
+        my_pokemon.attack(their_pokemon)
