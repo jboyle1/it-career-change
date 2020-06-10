@@ -120,7 +120,7 @@ class Trainer:
         return "The current active pokemon is {name}".format(name = self.pokemons[self.current_pokemon].name)
 
 
-    # 010 - # Create a switch_active_pokemon method.
+    # 010 - Create a switch_active_pokemon method.
     def switch_active_pokemon(self, new_active):
         # Switches the active pokemon to the number given as a parameter
         # First checks to see the number is valid (between 0 and the length of the list)
@@ -156,7 +156,7 @@ class Trainer:
         my_pokemon.attack(their_pokemon)
 
 
-# 013 - Make six pokemon that are made with different levels. (If no level is given, it is level 5)
+# 013 - Make six pokemon variables that are made with different levels. (If no level is given, it is level 5)
 a = Charmander(7)
 b = Squirtle()
 c = Squirtle(1)
