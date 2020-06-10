@@ -30,7 +30,8 @@ class Pokemon:
             else:
                 print("{name} now has {health} health.".format(name = self.name, health = self.health))
 
-# 004 - gain_health() function.
+
+# 004 - Add gain_health() function.
     def gain_health(self, amount):
         # Adds to a pokemon's heath
         # If a pokemon goes from 0 heath, then revive it
@@ -41,3 +42,13 @@ class Pokemon:
         if self.health >= self.max_health:
             self.health = self.max_health
         print("{name} now has {health} health.".format(name = self.name, health = self.health))
+
+
+# 005 - Add knock_out() function.
+    def knock_out(self):
+        # Knocking out a pokemon will flip its status to True.
+        self.is_knocked_out = True
+        # A knocked out pokemon can't have any health. This is a safety precaution. knock_out() should only be called if heath was set to 0, but if somehow the pokemon had health left, it gets set to 0.
+        if self.health != 0:
+            self.health = 0
+        print("{name} was knocked out!".format(name = self.name))
