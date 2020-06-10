@@ -57,7 +57,7 @@ class Pokemon:
         print("{name} was knocked out!".format(name = self.name))
 
 
-# 005 - Add revive() function.
+# 006 - Add revive() function.
     def revive(self):
             # Reviving a pokemon will flip it's status to False
             self.is_knocked_out = False
@@ -68,7 +68,7 @@ class Pokemon:
 
 
 
-# 004 - Create an attack method. This method takes another Pokemon as an argument and deals damage to that Pokemon.
+# 007 - Create an attack method. This method takes another Pokemon as an argument and deals damage to that Pokemon.
 
 def attack(self, other_pokemon):
         # Checks to make sure the pokemon isn't knocked out
@@ -89,3 +89,17 @@ def attack(self, other_pokemon):
             print("{my_name} attacked {other_name} for {damage} damage.".format(my_name = self.name, other_name = other_pokemon.name, damage = self.level * 2))
             print("It's super effective")
             other_pokemon.lose_health(self.level * 2)
+
+
+# 008 - Add three classes that are subclasses of Pokemon. Charmander is a fire type, Squirtle is a Water type, and Bulbasaur is a Grass type.
+class Charmander(Pokemon):
+    def __init__(self, level = 5):
+        super().__init__("Charmander", "Fire", level)
+
+class Squirtle(Pokemon):
+    def __init__(self, level = 5):
+        super().__init__("Squirtle", "Water", level)
+
+class Bulbasaur(Pokemon):
+    def __init__(self, level = 5):
+        super().__init__("Bulbasaur", "Grass", level)
