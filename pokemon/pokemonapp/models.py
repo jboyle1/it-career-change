@@ -69,7 +69,6 @@ class Pokemon:
 
 
 # 007 - Create an attack method. This method takes another Pokemon as an argument and deals damage to that Pokemon.
-
 def attack(self, other_pokemon):
         # Checks to make sure the pokemon isn't knocked out
         if self.is_knocked_out:
@@ -103,3 +102,19 @@ class Squirtle(Pokemon):
 class Bulbasaur(Pokemon):
     def __init__(self, level = 5):
         super().__init__("Bulbasaur", "Grass", level)
+
+
+# 009 - # Create a trainer, a trainer has a list of pokemon, a number of potions and a name. When the trainer gets created, the first pokemon in their list of pokemons is the active pokemon (number 0)
+class Trainer:
+    def __init__(self, pokemon_list, num_potions, name):
+        self.pokemons = pokemon_list
+        self.potions = num_potions
+        self.current_pokemon = 0
+        self.name = name
+
+    def __repr__(self):
+        # Prints the name of the trainer, the pokemon they currently have, and the current active pokemon.
+        print("The trainer {name} has the following pokemon".format(name = self.name))
+        for pokemon in self.pokemons:
+            print(pokemon)
+        return "The current active pokemon is {name}".format(name = self.pokemons[self.current_pokemon].name)
