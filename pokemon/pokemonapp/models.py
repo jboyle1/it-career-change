@@ -11,3 +11,7 @@ class Pokemon:
         self.max_health = level * 5
         self.type = type
         self.is_knocked_out = False
+
+# 002 - I will use the __repr__ method to print a string of a created pokemon that interpolates its stats. 
+    def __repr__(self):
+        return "Level {level} {name} has {health} hit points remaining. It is a {type} type Pokemon".format(level = self.level, name = self.name, health=self.health, type = self.type)
