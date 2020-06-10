@@ -118,3 +118,20 @@ class Trainer:
         for pokemon in self.pokemons:
             print(pokemon)
         return "The current active pokemon is {name}".format(name = self.pokemons[self.current_pokemon].name)
+
+
+    # 010 - # Create a switch_active_pokemon method.
+    def switch_active_pokemon(self, new_active):
+        # Switches the active pokemon to the number given as a parameter
+        # First checks to see the number is valid (between 0 and the length of the list)
+        if new_active < len(self.pokemons) and new_active >= 0:
+            # You can't switch to a pokemon that is knocked out
+            if self.pokemons[new_active].is_knocked_out:
+                print("{name} is knocked out. You can't make it your active pokemon".format(name = self.pokemons[new_active].name))
+            # You can't switch to your current pokemon
+            elif new_active == self.current_pokemon:
+                print("{name} is already your active pokemon".format(name = self.pokemons[new_active].name))
+            # Switches the pokemon
+            else:
+                self.current_pokemon = new_active
+                print("Go {name}, it's your turn!".format(name = self.pokemons[self.current_pokemon].name))
