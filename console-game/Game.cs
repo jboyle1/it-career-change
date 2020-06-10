@@ -67,5 +67,18 @@ namespace ConsoleGame
         return dimension;
       }
     }
+
+    // Create a DidScore() method. This will allow the score to increase if the character hits the @ object
+    public new static bool DidScore(int x1, int y1, int x2, int y2)
+    {
+      if (x1 == x2 && y1 == y2)
+      {
+        return true;
+      }
+      else
+      {
+        return false;
+      }
+    }
   }
 }
