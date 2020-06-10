@@ -18,8 +18,8 @@ class Pokemon:
         return "Level {level} {name} has {health} hit points remaining. It is a {type} type Pokemon".format(level = self.level, name = self.name, health=self.health, type = self.type)
 
 
-# 003 - Now I will create some class functionality. I will create a method that decreases the Pokémon’s health and a method for regaining health. I will also create a method that will knock out a Pokémon (when its health became 0) and another method to revive a knocked out Pokémon. Each method will show the health score of the pokemon after the method is run and if the health is not zero it will print a string to the console explaining the current health of that Pokemon.
-
+# Now I will create some class functionality. I will create a method that decreases the Pokémon’s health and a method for regaining health. I will also create a method that will knock out a Pokémon (when its health became 0) and another method to revive a knocked out Pokémon. Each method will show the health score of the pokemon after the method is run and if the health is not zero it will print a string to the console explaining the current health of that Pokemon.
+# 003 - Add lose_health() function.
     def lose_health(self, amount):
             # Deducts heath from a pokemon and prints the current health reamining
             self.health -= amount
@@ -30,4 +30,14 @@ class Pokemon:
             else:
                 print("{name} now has {health} health.".format(name = self.name, health = self.health))
 
-    
+# 004 - gain_health() function.
+    def gain_health(self, amount):
+        # Adds to a pokemon's heath
+        # If a pokemon goes from 0 heath, then revive it
+        if self.health == 0:
+            self.revive()
+        self.health += amount
+        # Makes sure the heath does not go over the max health
+        if self.health >= self.max_health:
+            self.health = self.max_health
+        print("{name} now has {health} health.".format(name = self.name, health = self.health))
