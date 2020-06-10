@@ -12,6 +12,22 @@ class Pokemon:
         self.type = type
         self.is_knocked_out = False
 
-# 002 - I will use the __repr__ method to print a string of a created pokemon that interpolates its stats. 
+
+# 002 - I will use the __repr__ (representation) method to print a string of a created pokemon that interpolates its stats. 
     def __repr__(self):
         return "Level {level} {name} has {health} hit points remaining. It is a {type} type Pokemon".format(level = self.level, name = self.name, health=self.health, type = self.type)
+
+
+# 003 - Now I will create some class functionality. I will create a method that decreases the Pokémon’s health and a method for regaining health. I will also create a method that will knock out a Pokémon (when its health became 0) and another method to revive a knocked out Pokémon. Each method will show the health score of the pokemon after the method is run and if the health is not zero it will print a string to the console explaining the current health of that Pokemon.
+
+    def lose_health(self, amount):
+            # Deducts heath from a pokemon and prints the current health reamining
+            self.health -= amount
+            if self.health <= 0:
+                #Makes sure the health doesn't become negative. Knocks out the pokemon.
+                self.health = 0
+                self.knock_out()
+            else:
+                print("{name} now has {health} health.".format(name = self.name, health = self.health))
+
+    
