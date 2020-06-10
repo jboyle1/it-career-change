@@ -68,26 +68,26 @@ class Pokemon:
 
 
 
-# 007 - Create an attack method. This method takes another Pokemon as an argument and deals damage to that Pokemon.
-def attack(self, other_pokemon):
-        # Checks to make sure the pokemon isn't knocked out
-        if self.is_knocked_out:
-            print("{name} can't attack because it is knocked out!".format(name = self.name))
-            return
-        # If the pokemon attacking has a disadvantage, then it deals damage equal to half its level to the other pokemon
-        if (self.type == "Fire" and other_pokemon.type == "Water") or (self.type == "Water" and other_pokemon.type == "Grass") or (self.type == "Grass" and other_pokemon.type == "Fire"):
-            print("{my_name} attacked {other_name} for {damage} damage.".format(my_name = self.name, other_name = other_pokemon.name, damage = round(self.level * 0.5)))
-            print("It's not very effective")
-            other_pokemon.lose_health(round(self.level * 0.5))
-        # If the pokemon attacking has neither advantage or disadvantage, then it deals damage equal to its level to the other pokemon
-        if (self.type == other_pokemon.type):
-            print("{my_name} attacked {other_name} for {damage} damage.".format(my_name = self.name, other_name = other_pokemon.name, damage = self.level))
-            other_pokemon.lose_health(self.level)
-        # If the pokemon attacking has advantage, then it deals damage equal to double its level to the other pokemon
-        if (self.type == "Fire" and other_pokemon.type == "Grass") or (self.type == "Water" and other_pokemon.type == "Fire") or (self.type == "Grass" and other_pokemon.type == "Water"):
-            print("{my_name} attacked {other_name} for {damage} damage.".format(my_name = self.name, other_name = other_pokemon.name, damage = self.level * 2))
-            print("It's super effective")
-            other_pokemon.lose_health(self.level * 2)
+    # 007 - Create an attack method. This method takes another Pokemon as an argument and deals damage to that Pokemon.
+    def attack(self, other_pokemon):
+            # Checks to make sure the pokemon isn't knocked out
+            if self.is_knocked_out:
+                print("{name} can't attack because it is knocked out!".format(name = self.name))
+                return
+            # If the pokemon attacking has a disadvantage, then it deals damage equal to half its level to the other pokemon
+            if (self.type == "Fire" and other_pokemon.type == "Water") or (self.type == "Water" and other_pokemon.type == "Grass") or (self.type == "Grass" and other_pokemon.type == "Fire"):
+                print("{my_name} attacked {other_name} for {damage} damage.".format(my_name = self.name, other_name = other_pokemon.name, damage = round(self.level * 0.5)))
+                print("It's not very effective")
+                other_pokemon.lose_health(round(self.level * 0.5))
+            # If the pokemon attacking has neither advantage or disadvantage, then it deals damage equal to its level to the other pokemon
+            if (self.type == other_pokemon.type):
+                print("{my_name} attacked {other_name} for {damage} damage.".format(my_name = self.name, other_name = other_pokemon.name, damage = self.level))
+                other_pokemon.lose_health(self.level)
+            # If the pokemon attacking has advantage, then it deals damage equal to double its level to the other pokemon
+            if (self.type == "Fire" and other_pokemon.type == "Grass") or (self.type == "Water" and other_pokemon.type == "Fire") or (self.type == "Grass" and other_pokemon.type == "Water"):
+                print("{my_name} attacked {other_name} for {damage} damage.".format(my_name = self.name, other_name = other_pokemon.name, damage = self.level * 2))
+                print("It's super effective")
+                other_pokemon.lose_health(self.level * 2)
 
 
 # 008 - Add three classes that are subclasses of Pokemon. Charmander is a fire type, Squirtle is a Water type, and Bulbasaur is a Grass type.
@@ -156,7 +156,7 @@ class Trainer:
         my_pokemon.attack(their_pokemon)
 
 
-# 013 Make six pokemon that are made with different levels. (If no level is given, it is level 5)
+# 013 - Make six pokemon that are made with different levels. (If no level is given, it is level 5)
 a = Charmander(7)
 b = Squirtle()
 c = Squirtle(1)
@@ -165,9 +165,17 @@ e = Charmander()
 f = Squirtle(2)
 
 
-# 014 Two trainers are created. The first three pokemon are given to trainer 1, the second three are given to trainer 2.
+# 014 - Two trainers are created. The first three pokemon are given to trainer 1, the second three are given to trainer 2.
 trainer_one = Trainer([a,b,c], 3, "Alex")
 trainer_two = Trainer([d,e,f], 5, "Sara")
 
 print(trainer_one)
 print(trainer_two)
+
+# 015 - # Testing attacking, giving potions, and switching pokemon.
+trainer_one.attack_other_trainer(trainer_two)
+trainer_two.attack_other_trainer(trainer_one)
+trainer_two.use_potion()
+trainer_one.attack_other_trainer(trainer_two)
+trainer_two.switch_active_pokemon(0)
+trainer_two.switch_active_pokemon(1)
