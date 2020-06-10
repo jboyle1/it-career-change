@@ -19,6 +19,9 @@ class Pokemon:
 
 
 # Now I will create some class functionality. I will create a method that decreases the Pokémon’s health and a method for regaining health. I will also create a method that will knock out a Pokémon (when its health became 0) and another method to revive a knocked out Pokémon. Each method will show the health score of the pokemon after the method is run and if the health is not zero it will print a string to the console explaining the current health of that Pokemon.
+
+# Each method will show the health score of the pokemon after the method is run and if the health is not zero it will print a string to the console explaining the current health of that Pokemon.
+
 # 003 - Add lose_health() function.
     def lose_health(self, amount):
             # Deducts heath from a pokemon and prints the current health reamining
@@ -52,3 +55,14 @@ class Pokemon:
         if self.health != 0:
             self.health = 0
         print("{name} was knocked out!".format(name = self.name))
+
+
+# 005 - Add revive() function.
+    def revive(self):
+            # Reviving a pokemon will flip it's status to False
+            self.is_knocked_out = False
+            # A revived pokemon can't have 0 health. This is a safety precaution. revive() should only be called if the pokemon was given some health, but if it somehow has no health, its health gets set to 1.
+            if self.health == 0:
+                self.health = 1
+            print("{name} was revived!".format(name = self.name))
+            
