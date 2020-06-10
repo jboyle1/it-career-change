@@ -50,5 +50,22 @@ namespace ConsoleGame
           return '<';
       }
     }
+
+    // Create a KeepInBounds() method. Without this method, hitting the boundaries will break the game
+    public new static int KeepInBounds(int dimension, int max)
+    {
+      if (dimension < 0)
+      {
+        return 0;
+      }
+      else if (dimension >= max)
+      {
+        return max - 1;
+      }
+      else 
+      {
+        return dimension;
+      }
+    }
   }
 }
