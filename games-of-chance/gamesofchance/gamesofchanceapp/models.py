@@ -24,7 +24,7 @@ def coin_flip(guess, bet):
         headsWins.format(totalMoney)
         print(headsWins)
 
-    # second conditional statement allows for a winning argument of 'Tails'. 2 is a match to 'Tails.
+    # elif statement allows for a winning argument of 'Tails'. 2 is a match to 'Tails.
     elif guess == "Tails" and coinSide == 2:
         # 'totalMoney' equals the starting money plus the bet.
         totalMoney = money + bet
@@ -34,6 +34,20 @@ def coin_flip(guess, bet):
         tailsWins = "Tails, you won! You now have {}"
         tailsWins.format(totalMoney)
         print(tailsWins)
+
+    # else statement prints if you loose. E.g if logical comparison operators do not match.
+    else:
+        # 'totalMoney' equals the starting money subtracted by the bet as the user lost.
+        totalMoney = money - bet
+        # print out the bet as an integer (subtracted).
+        print(int(-bet))
+        # print out string iterpolated with totalMoney
+        lost = "You lost! You now have {}"
+        lost.format(totalMoney)
+        print(lost)
+
+
+
 
 
 
