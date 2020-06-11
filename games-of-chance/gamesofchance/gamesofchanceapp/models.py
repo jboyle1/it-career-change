@@ -18,10 +18,11 @@ def coin_flip(guess, bet):
         # 'totalMoney' equals the starting money plus the bet.
         totalMoney = money + bet
         # print out the bet as an integer.
-        print(int(bet))
+        yourBet = int(bet)
+        yourBetString = "Your bet is {}".format(yourBet)
+        print(yourBetString)
         # print out string iterpolated with totalMoney
-        headsWins = "Heads, you won! You now have {}"
-        headsWins.format(totalMoney)
+        headsWins = "Heads, you won! You now have {}".format(totalMoney)
         print(headsWins)
         return totalMoney
 
@@ -30,10 +31,11 @@ def coin_flip(guess, bet):
         # 'totalMoney' equals the starting money plus the bet.
         totalMoney = money + bet
         # print out the bet as an integer.
-        print(int(bet))
+        yourBet = int(bet)
+        yourBetString = "Your bet is {}".format(yourBet)
+        print(yourBetString)
         # print out string iterpolated with totalMoney
-        tailsWins = "Tails, you won! You now have {}"
-        tailsWins.format(totalMoney)
+        tailsWins = "Tails, you won! You now have {}".format(totalMoney)
         print(tailsWins)
         return totalMoney
 
@@ -42,14 +44,16 @@ def coin_flip(guess, bet):
         # 'totalMoney' equals the starting money subtracted by the bet as the user lost.
         totalMoney = money - bet
         # print out the bet as an integer (subtracted).
-        print(int(-bet))
+        yourBet = int(bet)
+        yourBetString = "Your bet is {}".format(yourBet)
+        print(yourBetString)
         # print out string iterpolated with totalMoney
-        lost = "You lost! You now have {}"
-        lost.format(totalMoney)
+        lost = "You lost! You now have {}".format(totalMoney)
         print(lost)
         return totalMoney
 
-
+# Call coin_flip function
+coin_flip("Tails", 800)
 
 
 
