@@ -9,16 +9,16 @@ import random
 money = 100
 
 # 002 - Create a function that simulates flipping a coin and calling either "Heads" or "Tails".
-def coin_flip(guess, bet):
+def coin_flip(guess, wager):
     # 'coinside' generates a side of the coin that wins.
     coinSide = random.randint(1,2)
 
     # First conditional statement allows for a winning argument of 'Heads'. 1 is a match to 'Heads.
     if guess == "Heads" and coinSide == 1:
         # 'totalMoney' equals the starting money plus the bet.
-        totalMoney = money + bet
+        totalMoney = money + (wager * 2)
         # print out the bet as an integer.
-        yourBet = int(bet)
+        yourBet = int(wager)
         yourBetString = "Your bet is {}".format(yourBet)
         print(yourBetString)
         # print out string iterpolated with totalMoney
@@ -29,9 +29,9 @@ def coin_flip(guess, bet):
     # elif statement allows for a winning argument of 'Tails'. 2 is a match to 'Tails.
     elif guess == "Tails" and coinSide == 2:
         # 'totalMoney' equals the starting money plus the bet.
-        totalMoney = money + bet
+        totalMoney = money + wager
         # print out the bet as an integer.
-        yourBet = int(bet)
+        yourBet = int(wager)
         yourBetString = "Your bet is {}".format(yourBet)
         print(yourBetString)
         # print out string iterpolated with totalMoney
@@ -42,9 +42,9 @@ def coin_flip(guess, bet):
     # else statement prints if you loose. E.g if logical comparison operators do not match.
     else:
         # 'totalMoney' equals the starting money subtracted by the bet as the user lost.
-        totalMoney = money - bet
+        totalMoney = money - wager
         # print out the bet as an integer (subtracted).
-        yourBet = int(bet)
+        yourBet = int(wager)
         yourBetString = "Your bet is {}".format(yourBet)
         print(yourBetString)
         # print out string iterpolated with totalMoney
@@ -53,10 +53,13 @@ def coin_flip(guess, bet):
         return totalMoney
 
 # Call coin_flip function
-coin_flip("Tails", 800)
-
-
-
-
-
+name = input("Please Enter a Username: ")
+print("\n")
+print("Hello {}".format(name))
+print("Lets play a game of Heads or tails!")
+print("\n")
+bet = input("Please enter your wager: ")
+wager = int(bet)
+guess = input("Please enter your guess (Heads or Tails): ")
+coin_flip(guess, wager)
 
