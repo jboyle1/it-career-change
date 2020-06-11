@@ -12,10 +12,10 @@ money = 100
 def coin_flip(guess, bet):
     # 'coinside' generates a side of the coin that wins.
     coinSide = random.randint(1,2)
-    
+
     # First conditional statement allows for a winning argument of 'Heads'. 1 is a match to 'Heads.
     if guess == "Heads" and coinSide == 1:
-        # 'totalMoney equals the starting money plus the bet.
+        # 'totalMoney' equals the starting money plus the bet.
         totalMoney = money + bet
         # print out the bet as an integer.
         print(int(bet))
@@ -24,7 +24,16 @@ def coin_flip(guess, bet):
         headsWins.format(totalMoney)
         print(headsWins)
 
-    
+    # second conditional statement allows for a winning argument of 'Tails'. 2 is a match to 'Tails.
+    elif guess == "Tails" and coinSide == 2:
+        # 'totalMoney' equals the starting money plus the bet.
+        totalMoney = money + bet
+        # print out the bet as an integer.
+        print(int(bet))
+        # print out string iterpolated with totalMoney
+        tailsWins = "Tails, you won! You now have {}"
+        tailsWins.format(totalMoney)
+        print(tailsWins)
 
 
 
