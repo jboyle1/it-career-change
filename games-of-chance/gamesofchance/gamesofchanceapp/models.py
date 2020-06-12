@@ -81,6 +81,12 @@ def coin_flip(guess, wager1):
         print(lost)
         return totalMoney
 
+# Call coin_flip function
+greeting()
+wager1_value()
+guess_value()
+coin_flip(guess, wager1)
+
 def play_coin_flip_again():
     playCoinFlipAgain = input("Would you like to play again! Y/N: ")
     if playCoinFlipAgain == "Y":
@@ -93,12 +99,10 @@ def play_coin_flip_again():
         print("{}, lets play a game of Cho-Han!".format(name))
         print("\n")
 
-# Call coin_flip function
-greeting()
-wager1_value()
-guess_value()
-coin_flip(guess, wager1)
 play_coin_flip_again()
+
+
+
 
 
 # --- Cho-Han Function ---
@@ -106,7 +110,7 @@ play_coin_flip_again()
 
 
 # 003 - Create a function that simulates rolling two dice and adding the results together. The player predicts whether the sum of those dice is odd or even and wins if their prediction is correct.
-# Get value for wager1 and guess variables
+# Get values for wager and oddOrEven variables
 
 def wager2_value():
     global wager2
@@ -120,11 +124,7 @@ def odd_or_even_value():
     oddOrEven = input("Please enter odd or even: ")
     return oddOrEven
 
-def cho_han(oddOrEven, wager2, name, totalMoney):
-    # Get values for wager and guess variables
-    bet2 = input("Please enter your wager: ")
-    wager2 = int(bet2)
-    oddOrEven = input("Please enter odd or even: ")
+def cho_han(oddOrEven, wager2, totalMoney):
 
     # 'dice1' & 'dice2' each generates a number between 1 -6.
     dice1 = random.randint(1, 6)
@@ -162,20 +162,35 @@ def cho_han(oddOrEven, wager2, name, totalMoney):
 
 wager2_value()
 odd_or_even_value()
-cho_han(oddOrEven, wager2, name, totalMoney)
+cho_han(oddOrEven, wager2, totalMoney)
+
+def play_cho_han_again():
+    playChoHanAgain = input("Would you like to play again! Y/N: ")
+    if playChoHanAgain == "Y":
+        wager2_value()
+        odd_or_even_value()
+        cho_han(oddOrEven, wager2, totalMoney)
+        play_cho_han_again()
+    else:
+        print("\n")
+        print("{}, lets play a game of Highest card wins!".format(name))
+        print("\n")
+
+
+play_cho_han_again()
 
 
 # --- Cho-Han Function ---
 
 # Get values for wager and guess variables
 
-print("\n")
-print("{}, lets play a game of highest card wins".format(name))
-print("\n")
-bet3 = input("Please enter your wager: ")
-wager3 = int(bet2)
-userCard = input("Please pick a card! Please type in the following format - king: diamonds")
-computerCard = random.randint(0, 53)
+# print("\n")
+# print("{}, lets play a game of highest card wins".format(name))
+# print("\n")
+# bet3 = input("Please enter your wager: ")
+# wager3 = int(bet2)
+# userCard = input("Please pick a card! Please type in the following format - king: diamonds")
+# computerCard = random.randint(0, 53)
 
 # 004 - Create a function that simulates two players picking a card randomly from a deck of cards. The higher number wins.
 
