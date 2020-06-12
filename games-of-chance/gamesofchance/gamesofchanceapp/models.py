@@ -2,13 +2,13 @@ from django.db import models
 
 # Create your models here.
 
-# --- Coin Toss Function ---
-
 # 001 - Import the random module and create a variable called money that starts with 100.
 import random
 
+# Starting money total:
 totalMoney = 100
 
+# Create a greeting function that only runs once. It will add a global value to the name variable. (couldn't return value without assigning it as a global variable?)
 def greeting():
     global name
     name = input("Please Enter a Username: ")
@@ -18,7 +18,10 @@ def greeting():
     print("\n")
     return name
 
-# Get value for wager1 and guess variables
+
+# --- Coin Toss Function ---
+
+# Get value for 'wager1' and 'guess' variables that will be used in the coin flip function 
 
 def wager1_value():
     global wager1
@@ -41,7 +44,7 @@ def coin_flip(guess, wager1):
     global totalMoney
     # First conditional statement allows for a winning argument of 'Heads'. 1 is a match to 'Heads.
     if guess == "Heads" and coinSide == 1:
-        # 'totalMoney' equals the starting money plus the bet.
+        # 'totalMoney' equals the starting money plus the bet * 2. (not sure how betting odds work so I just multiplied the wager by two if the user wins and add it to the totalMoney variable)
         totalMoney = totalMoney + (wager1 * 2)
         # print out the bet as an integer.
         yourBet = int(wager1)
@@ -81,12 +84,13 @@ def coin_flip(guess, wager1):
         print(lost)
         return totalMoney
 
-# Call coin_flip function
+# Call greeting, wager1_value, guess_value, and coin_flip functions
 greeting()
 wager1_value()
 guess_value()
 coin_flip(guess, wager1)
 
+# Create a function that asks the user if they would like to play coin flip again. Use a conditional statemnent to re-call the previously called functions including the 'play_coin_flip_again()' itself. If the user decides not to play again the else statement will continue to the next game.
 def play_coin_flip_again():
     playCoinFlipAgain = input("Would you like to play again! Y/N: ")
     if playCoinFlipAgain == "Y":
@@ -99,22 +103,25 @@ def play_coin_flip_again():
         print("{}, lets play a game of Cho-Han!".format(name))
         print("\n")
 
+# Call play_coin_flip_again()
 play_coin_flip_again()
-
-
-
 
 
 # --- Cho-Han Function ---
 
 
-
-# 003 - Create a function that simulates rolling two dice and adding the results together. The player predicts whether the sum of those dice is odd or even and wins if their prediction is correct.
-# Get values for wager and oddOrEven variables
+# Get values for 'wager2' and 'oddOrEven' variables. If the user decides to play again The 'wager2_value_replay()' function will run instead of the original 'wager2_value()', this is so the new 'newTotalMoney' value at the end of calling main 'cho_han()' function will be used instead of old 'totalMoney' value.
 
 def wager2_value():
     global wager2
     print("You have {}".format(totalMoney))
+    bet2 = input("Please enter your wager: ")
+    wager2 = int(bet2)
+    return wager2
+
+def wager2_value_replay():
+    global wager2
+    print("You have {}".format(newTotalMoney))
     bet2 = input("Please enter your wager: ")
     wager2 = int(bet2)
     return wager2
@@ -124,9 +131,10 @@ def odd_or_even_value():
     oddOrEven = input("Please enter odd or even: ")
     return oddOrEven
 
+# 003 - Create a function that simulates rolling two dice and adding the results together. The player predicts whether the sum of those dice is odd or even and wins if their prediction is correct.
 def cho_han(oddOrEven, wager2, totalMoney):
-
-    # 'dice1' & 'dice2' each generates a number between 1 -6.
+    global newTotalMoney
+    # 'dice1' & 'dice2' each generates a number between 1 & 6.
     dice1 = random.randint(1, 6)
     dice2 = random.randint(1, 6)
 
@@ -141,56 +149,64 @@ def cho_han(oddOrEven, wager2, totalMoney):
     # Get the modulo of the sum of the two values added together
     sumOfTwoDice = (dice1 + dice2) % 2
 
-    # Write a conditional statement that uses logical operators to find out if the left over modulo value in 'sumOfTwoDice' is odd or even and prints if the user has guessed correctly. This in turn adds or subtracts the totalMoney value. 
+    # Write a conditional statement that uses logical operators to find out if the left over modulo value in 'sumOfTwoDice' is odd or even and prints if the user has guessed correctly. This in turn adds or subtracts the new 'newTotalMoney' value. 
     if sumOfTwoDice == 0 and oddOrEven == "even":
         # Add the 'totalMoney' to the winnings
-        totalMoney = totalMoney + (wager2 * 2)
+        newTotalMoney = totalMoney + (wager2 * 2)
         print("Even!")
-        print("You have won {}! you now have {}".format(name, totalMoney))
-        return totalMoney
+        print("You have won {}! you now have {}".format(name, newTotalMoney))
+        return newTotalMoney
+
     # Create an elif statement that prints if the 'sumOfTwoDice' is odd.
     elif sumOfTwoDice != 0 and oddOrEven == "odd":
          # Add the 'totalMoney' to the winnings
-        totalMoney = totalMoney + (wager2 * 2)
+        newTotalMoney = totalMoney + (wager2 * 2)
         print("Odd!")
-        print("You have won {}! you now have {}".format(name, totalMoney))
-        return totalMoney
-    else:
-        totalMoney = totalMoney - wager2
-        print("Sorry {}, you lost! you now have {}".format(name, totalMoney))
-        return totalMoney
+        print("You have won {}! you now have {}".format(name, newTotalMoney))
+        return newTotalMoney
 
+    # Create an else statement that prints if the user looses.
+    else:
+        # Subtract the 'wager2 ' value from total money.
+        newTotalMoney = totalMoney - wager2
+        print("Sorry {}, you lost! you now have {}".format(name, newTotalMoney))
+        return newTotalMoney
+
+# Call wager2_value, odd_or_even_value, cho_han functions.
 wager2_value()
 odd_or_even_value()
 cho_han(oddOrEven, wager2, totalMoney)
 
+# Create a function that asks the user if they would like to play Cho Han again. Use a conditional statemnent to re-call the previously called functions including the 'play_cho_han_again()' itself. If the user decides not to play again the else statement will continue to the next game.
 def play_cho_han_again():
     playChoHanAgain = input("Would you like to play again! Y/N: ")
     if playChoHanAgain == "Y":
-        wager2_value()
+        # call 'wager2_value_replay' instead of original 'wager2_value()'. This will insure that the 'newTotalMoney' value will get paste through the replay and not the original 'totalMoney' from the previous game.
+        wager2_value_replay()
         odd_or_even_value()
-        cho_han(oddOrEven, wager2, totalMoney)
+        cho_han(oddOrEven, wager2, newTotalMoney)
         play_cho_han_again()
     else:
         print("\n")
         print("{}, lets play a game of Highest card wins!".format(name))
         print("\n")
 
-
+# Call play_cho_han_again()
 play_cho_han_again()
 
 
 # --- Cho-Han Function ---
 
-# Get values for wager and guess variables
+# hi = "high"
+# lo = "low"
 
-# print("\n")
-# print("{}, lets play a game of highest card wins".format(name))
-# print("\n")
-# bet3 = input("Please enter your wager: ")
-# wager3 = int(bet2)
-# userCard = input("Please pick a card! Please type in the following format - king: diamonds")
-# computerCard = random.randint(0, 53)
+# def high_low(bet, hi_or_lo, number_of_games):
+
+
+
+
+
+
 
 # 004 - Create a function that simulates two players picking a card randomly from a deck of cards. The higher number wins.
 
