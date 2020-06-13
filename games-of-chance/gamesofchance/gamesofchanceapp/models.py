@@ -190,7 +190,7 @@ def play_cho_han_again():
         play_cho_han_again()
     else:
         print("\n")
-        print("{}, lets play a game of Highest card wins!".format(name))
+        print("{}, lets play a game of High or Low!".format(name))
         print("\n")
 
 # Call play_cho_han_again()
@@ -199,10 +199,27 @@ play_cho_han_again()
 
 # --- Cho-Han Function ---
 
-hi = "high"
-lo = "low"
 
-def high_low(bet, hiOrLo, numberOfGames):
+# Get variables from user for wager3, hiOrLo, and numberOfGames. These will be used for the high_low() perameter variables.
+def wager3_value():
+    global wager3
+    print("You have {}".format(totalMoney002))
+    bet3 = input("Please enter your wager: ")
+    wager3 = int(bet3)
+    return wager3
+
+def hi_or_lo():
+    global hiOrLo
+    hiOrLo = input("Please 'high' or 'low': ")
+    return hiOrLo
+
+def number_of_games():
+    global numberOfGames
+    numberOfGames = input("How many games would you like to play?: ")
+    numberOfGames = int(numberOfGames)
+    return numberOfGames
+
+def high_low(wager3, hiOrLo, numberOfGames, totalMoney002):
     # Create 'totalMoney003' as a global variable to return new total.
     global totalMoney003
     # Create 'cardNumber' variable that contains a list of numbers from 1 to 13
@@ -212,7 +229,7 @@ def high_low(bet, hiOrLo, numberOfGames):
     # Create a for loop that iterates through a control flow for the amount of games stated in 'numberOfGames' perameter.
     for game in range(numberOfGames):
         # Create a while loop that checks if the user has enough money to bet with and still has gaes to play.
-        while totalMoney002 >= bet and game < numberOfGames:
+        while totalMoney002 >= wager3 and game < numberOfGames:
             # Zip() the two card lists together and store in 'cardDeck' variable
             cardDeck = list(zip(cardNumber, cardType))
             # Create an empty list called 'PlayerDraw'
@@ -224,16 +241,16 @@ def high_low(bet, hiOrLo, numberOfGames):
             # Now allow the computer to draw a card
             houseDraw = [random.choice(cardDeck)]
             # Create a if statement that checks if the players Draw is higher and maches with high or vice versa using logical operators. If either match, the user is printed as the as the winner and the cards and 'totalMoney003' are printed also.
-            if (playerDraw[0] > houseDraw[0] and hiOrLo == hi) or (playerDraw[0] < houseDraw[0] and hiOrLo == lo):
+            if (playerDraw[0] > houseDraw[0] and hiOrLo == "high") or (playerDraw[0] < houseDraw[0] and hiOrLo == "low"):
                 # 'totalMoney003' equals the starting money plus the bet * 2.
-                totalMoney003 = totalMoney002 + (bet * 2)
+                totalMoney003 = totalMoney002 + (wager3 * 2)
                 print("Winner is {}, Congratulations! You won after drawing a {} of {} against the House draw, {} of {}. You're new total is ${}.".format(hiOrLo, *playerDraw[0], *houseDraw[0], totalMoney003))
                 # The game number is increased.
                 game += 1
             # Use an elif statement to desipher if the computer wins and prints a similar string to the console.
-            elif (playerDraw[0] < houseDraw[0] and hiOrLo == hi) or (playerDraw[0] > houseDraw[0] and hiOrLo == lo):
-                totalMoney003 = totalMoney002 - bet
-                print("The result is not {}, I'm sorry you lost. You drew a {} of {} against the House draw, {} of {}. You're new total is ${}.".format(hiOrLo, bet, *playerDraw[0], *houseDraw[0], totalMoney003))
+            elif (playerDraw[0] < houseDraw[0] and hiOrLo == "high") or (playerDraw[0] > houseDraw[0] and hiOrLo == "low"):
+                totalMoney003 = totalMoney002 - wager3
+                print("The result is not {}, I'm sorry you lost. You drew a {} of {} against the House draw, {} of {}. You're new total is ${}.".format(hiOrLo, *playerDraw[0], *houseDraw[0], totalMoney003))
                 game += 1
             # The last else statements code block runs if there is a draw. the 'totalMoney003' stays the same.
             elif playerDraw[0] == houseDraw[0]:
@@ -246,7 +263,11 @@ def high_low(bet, hiOrLo, numberOfGames):
         else:
             return "You do not have enough money to cover your bet. Thanks for playing!"
 
-
+# Call wager3_value, hi_or_lo, number_of_games, and high_low functions.
+wager3_value()
+hi_or_lo()
+number_of_games()
+high_low(wager3, hiOrLo, numberOfGames, totalMoney002)
 
 
 
