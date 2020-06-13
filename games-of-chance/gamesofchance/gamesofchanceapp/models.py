@@ -111,7 +111,7 @@ play_coin_flip_again()
 # --- Cho-Han Function ---
 
 
-# Get values for 'wager2' and 'oddOrEven' variables. If the user decides to play again The 'wager2_value_replay()' function will run instead of the original 'wager2_value()', this is so the new 'newTotalMoney' value at the end of calling main 'cho_han()' function will be used instead of old 'totalMoney001' value.
+# Get values for 'wager2' and 'oddOrEven' variables. 
 
 def wager2_value():
     global wager2
@@ -120,6 +120,7 @@ def wager2_value():
     wager2 = int(bet2)
     return wager2
 
+# If the user decides to play again The 'wager2_value_replay()' function will run instead of the original 'wager2_value()', this is so the new 'newTotalMoney' value at the end of calling main 'cho_han()' function will be used instead of old 'totalMoney001' value.
 def wager2_value_replay():
     global wager2
     print("You have {}".format(totalMoney002))
@@ -208,10 +209,21 @@ def wager3_value():
     wager3 = int(bet3)
     return wager3
 
+# If the user decides to play again The 'wager2_value_replay()' function will run instead of the original 'wager2_value()', this is so the new 'newTotalMoney' value at the end of calling main 'cho_han()' function will be used instead of old 'totalMoney001' value.
+def wager3_value_replay():
+    global wager3
+    print("You have {}".format(totalMoney003))
+    bet3 = input("Please enter your wager: ")
+    wager3 = int(bet3)
+    return wager3
+
+# Create a function that declares a 'high' or 'low' value to the hiOrLow variable.
 def hi_or_lo():
     global hiOrLo
     hiOrLo = input("Please 'high' or 'low': ")
     return hiOrLo
+
+# 004 - Create a function that simulates two players picking a card randomly from a deck of cards. The higher number wins.
 
 def high_low(wager3, hiOrLo, totalMoney002):
     # Create 'totalMoney003' as a global variable to return new total.
@@ -254,9 +266,22 @@ wager3_value()
 hi_or_lo()
 high_low(wager3, hiOrLo, totalMoney002)
 
+# Create a function that asks the user if they would like to play Cho Han again. Use a conditional statemnent to re-call the previously called functions including the 'play_cho_han_again()' itself. If the user decides not to play again the else statement will continue to the next game.
+def play_high_or_low_again():
+    playHighOrLowAgain = input("Would you like to play again! Y/N: ")
+    if playHighOrLowAgain == "Y":
+        # call 'wager2_value_replay' instead of original 'wager2_value()'. This will insure that the 'totalMoney002' value will get paste through the replay and not the original 'totalMoney001' from the previous game.
+        wager3_value_replay()
+        hi_or_lo()
+        high_low(wager3, hiOrLo, totalMoney003)
+        play_high_or_low_again()
+    else:
+        print("\n")
+        print("{}, lets play a game of ####".format(name))
+        print("\n")
+
+# Call play_high_or_low_again()
+play_high_or_low_again()
 
 
 
-# 004 - Create a function that simulates two players picking a card randomly from a deck of cards. The higher number wins.
-
-# def highest_card(wager3, name, userCard, computerCard):
