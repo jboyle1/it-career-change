@@ -217,8 +217,13 @@ def high_low(bet, hiOrLo, numberOfGames):
             cardDeck = list(zip(cardNumber, cardType))
             # Create an empty list called 'PlayerDraw'
             playerDraw = []
-            # use 'random.choice()' to mixed the zipped cardDeck variable and append it to the variable 'playerDraw'
+            # Use 'random.choice()' to mixed the zipped cardDeck variable and append it to the variable 'playerDraw'
             playerDraw.append(random.choice(cardDeck))
+            # Remove the players card from the deck.
+            cardDeck.remove(playerDraw[0])
+            # Now allow the computer to draw a card
+            houseDraw = [random.choice(cardDeck)]
+            
 
 
 
