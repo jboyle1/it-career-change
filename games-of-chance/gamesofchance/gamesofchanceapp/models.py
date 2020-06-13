@@ -59,8 +59,8 @@ def coin_flip(guess, wager1):
 
     # elif statement allows for a winning argument of 'Tails'. 2 is a match to 'Tails.
     elif guess == "Tails" and coinSide == 2:
-        # 'totalMoney001' equals the starting money plus the bet.
-        totalMoney001 = totalMoney001 + wager1
+        # 'totalMoney001' equals the starting money plus the bet * 2.
+        totalMoney001 = totalMoney001 + (wager1 * 2)
         # print out the bet as an integer.
         yourBet = int(wager1)
         print("\n")
@@ -223,7 +223,28 @@ def high_low(bet, hiOrLo, numberOfGames):
             cardDeck.remove(playerDraw[0])
             # Now allow the computer to draw a card
             houseDraw = [random.choice(cardDeck)]
-            
+            # Create a if statement that checks if the players Draw is higher and maches with high or vice versa using logical operators. If either match, the user is printed as the as the winner and the cards and 'totalMoney003' are printed also.
+            if (playerDraw[0] > houseDraw[0] and hiOrLo == hi) or (playerDraw[0] < houseDraw[0] and hiOrLo == lo):
+                # 'totalMoney003' equals the starting money plus the bet * 2.
+                totalMoney003 = totalMoney002 + (bet * 2)
+                print("Winner is {}, Congratulations! You won after drawing a {} of {} against the House draw, {} of {}. You're new total is ${}.".format(hiOrLo, *playerDraw[0], *houseDraw[0], totalMoney003))
+                # The game number is increased.
+                game += 1
+            # Use an elif statement to desipher if the computer wins and prints a similar string to the console.
+            elif (playerDraw[0] < houseDraw[0] and hiOrLo == hi) or (playerDraw[0] > houseDraw[0] and hiOrLo == lo):
+                totalMoney003 = totalMoney002 - bet
+                print("The result is not {}, I'm sorry you lost. You drew a {} of {} against the House draw, {} of {}. You're new total is ${}.".format(hiOrLo, bet, *playerDraw[0], *houseDraw[0], totalMoney003))
+                game += 1
+            # The last else statements code block runs if there is a draw. the 'totalMoney003' stays the same.
+            elif playerDraw[0] == houseDraw[0]:
+                totalMoney003 = totalMoney002
+                print("The result is a tie, with your draw, {} of {}, and the house draw, {} of {}. Your total is unchanged, at ${}.".format( *playerDraw[0], *houseDraw[0], totalMoney003))
+                game += 1
+        # Create an if statement that checks the total number of games played and if you have enough money to play.
+        if game == numberOfGames:
+            return "Thanks for playing!"
+        else:
+            return "You do not have enough money to cover your bet. Thanks for playing!"
 
 
 
