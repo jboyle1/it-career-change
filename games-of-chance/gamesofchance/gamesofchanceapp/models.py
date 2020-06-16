@@ -21,7 +21,7 @@ def greeting():
 
 # --- Coin Toss Function ---
 
-# Get value for 'wager1' and 'guess' variables that will be used in the coin flip function 
+# Get value for 'wager1' and 'guess' variables that will be used in the coin flip function.
 
 def wager1_value():
     global wager1
@@ -34,7 +34,7 @@ def wager1_value():
 def guess_value():
     global guess
     print("\n")
-    guess = input("Please enter your guess (Heads or Tails): ")
+    guess = input("Please enter your guess (heads or tails): ")
     return guess
 
 # 002 - Create a function that simulates flipping a coin and calling either "Heads" or "Tails".
@@ -44,7 +44,7 @@ def coin_flip(guess, wager1):
     # Update 'totalMoney001' as a global variable to return new total.
     global totalMoney001
     # First conditional statement allows for a winning argument of 'Heads'. 1 is a match to 'Heads.
-    if guess == "Heads" and coinSide == 1:
+    if guess == "heads" and coinSide == 1:
         # 'totalMoney001' equals the starting money plus the bet * 2. (not sure how betting odds work so I just multiplied the wager by two if the user wins and add it to the totalMoney001 variable)
         totalMoney001 = totalMoney001 + (wager1 * 2)
         # print out the bet as an integer.
@@ -58,7 +58,7 @@ def coin_flip(guess, wager1):
         return totalMoney001
 
     # elif statement allows for a winning argument of 'Tails'. 2 is a match to 'Tails.
-    elif guess == "Tails" and coinSide == 2:
+    elif guess == "tails" and coinSide == 2:
         # 'totalMoney001' equals the starting money plus the bet * 2.
         totalMoney001 = totalMoney001 + (wager1 * 2)
         # print out the bet as an integer.
@@ -277,11 +277,9 @@ def play_high_or_low_again():
         play_high_or_low_again()
     else:
         print("\n")
-        print("{}, lets play a game of ####".format(name))
+        print("{}, You have played all the games".format(name))
         print("\n")
 
 # Call play_high_or_low_again()
 play_high_or_low_again()
-
-
 
