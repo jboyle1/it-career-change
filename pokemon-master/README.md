@@ -8,7 +8,7 @@ In this project, I will be using Python Classes to create a game system similar 
 
 I have used Python and the Django framework for this project. This app is not playable and is only printed to the console after the class methods are hard coded into the program. There is no interactivity yet.
 
-## The Program classes are defined in pokemon/pokemon/pokemonapp/models.py. I have used Gitbhub for version control to document each step along with adding comments in the code. Here are the corisponding steps from the program:
+### The Program classes are defined in pokemon/pokemon/pokemonapp/models.py. I have used Gitbhub for version control to document each step along with adding comments in the code. Here are the corisponding steps from the program:
 
 001 - To create a pokemon constructor class, I will give it a name, type, and level perameters. Its max health will be determined by its level. I will give it a default level of 5. Its starting health is its max health and it is not knocked out when it starts.
 
